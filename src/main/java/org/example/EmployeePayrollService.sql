@@ -108,3 +108,31 @@ CREATE TABLE employeeDepartment(
                                   FOREIGN KEY (employeeId) REFERENCES employee(employeeId),
                                   FOREIGN KEY (departmentId) REFERENCES department(deptId)
                                );
+
+# UC12 Ensure All Retrieve queries done are working or not specially UC4, UC5 and UC7 with new Table Structure.
+
+INSERT INTO company VALUES (1, 'Google'),
+                           (2, 'Amazon'),
+                           (3, 'Facebook');
+
+INSERT INTO employee (companyID, name, phone, address, gender)
+                                                       VALUES(1, 'Prashik', '8806187589', 'Akola', 'M'),
+                                                             (1, 'Ratnadip', '8983253634', 'Amravati', 'M'),
+                                                             (2, 'Mazhar', '8125629427', 'Hyderabad', 'M'),
+                                                             (3, 'Priyanka', '9999999999', 'Pune', 'F');
+
+INSERT INTO payroll VALUES(1, 10000, 100, 50, 50, 9800),
+                          (2, 20000, 200, 100, 100, 19600),
+                          (5, 30000, 300, 150, 150, 29400),
+                          (6, 40000, 400, 200, 200, 39200);
+
+INSERT INTO department VALUES (1, 'HR'),
+                              (2, 'Sales'),
+                              (3, 'Marketing');
+
+INSERT INTO employeeDepartment VALUES (1, 1),
+                                      (2, 2),
+                                      (5, 1),
+                                      (5, 2),
+                                      (6, 2),
+                                      (6, 3);

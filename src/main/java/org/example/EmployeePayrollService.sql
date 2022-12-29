@@ -34,3 +34,16 @@ SELECT salary FROM employee_payroll WHERE startdate BETWEEN CAST('2021-01-01' AS
 ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
 
 UPDATE employee_payroll SET gender = 'M' WHERE name = "Prashik" OR name = "Ratnadip" OR name = "Mazhar";
+
+# UC7 Finding Sum, Avg, Min, Max, Count And Number Of Male And Female Employees
+
+SELECT gender, SUM(salary) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;
+SELECT gender, SUM(salary) FROM employee_payroll GROUP BY gender;
+
+SELECT gender, AVG(salary) FROM employee_payroll GROUP BY gender;
+
+SELECT gender, MIN(salary) FROM employee_payroll GROUP BY gender;
+
+SELECT gender, MAX(salary) FROM employee_payroll GROUP BY gender;
+
+SELECT gender, COUNT(salary) FROM employee_payroll GROUP BY gender;

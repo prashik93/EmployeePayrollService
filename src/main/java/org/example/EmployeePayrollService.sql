@@ -28,3 +28,9 @@ SELECT * FROM employee_payroll;
 SELECT salary FROM employee_payroll WHERE name = "Prashik";
 
 SELECT salary FROM employee_payroll WHERE startdate BETWEEN CAST('2021-01-01' AS DATE) AND DATE (NOW());
+
+# UC6_AddingGenderToEmployeePayrollTable
+
+ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
+
+UPDATE employee_payroll SET gender = 'M' WHERE name = "Prashik" OR name = "Ratnadip" OR name = "Mazhar";

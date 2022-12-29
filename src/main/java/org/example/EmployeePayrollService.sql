@@ -18,3 +18,7 @@ INSERT INTO employee_payroll (name, salary, startdate) VALUES("Prashik", 50000, 
                                    ("Ratnadip", 60000, "2021-10-28"),
                                    ("Priyanka", 70000, "2021-03-10"),
                                    ("Mazhar", 80000, "2020-05-19");
+
+# UC4_RetrieveAllDataFromEmployeePayrollData
+
+SELECT * FROM employee_payroll;

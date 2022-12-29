@@ -47,3 +47,9 @@ SELECT gender, MIN(salary) FROM employee_payroll GROUP BY gender;
 SELECT gender, MAX(salary) FROM employee_payroll GROUP BY gender;
 
 SELECT gender, COUNT(salary) FROM employee_payroll GROUP BY gender;
+
+# UC8 Extending Employee Payroll Table i.e to Adding Phone, Address And Department as a new Columns.
+
+ALTER TABLE employee_payroll ADD phone VARCHAR(13) AFTER name,
+                             ADD address VARCHAR(100) DEFAULT "Akola" AFTER phone,
+                             ADD department VARCHAR(50) NOT NULL AFTER address;

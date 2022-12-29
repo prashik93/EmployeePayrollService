@@ -62,3 +62,9 @@ ALTER TABLE employee_payroll ADD deductions DOUBLE NOT NULL AFTER basicPay,
                              ADD taxablePay DOUBLE NOT NULL AFTER deductions,
                              ADD incomeTax DOUBLE NOT NULL AFTER taxablePay,
                              ADD netPay DOUBLE NOT NULL AFTER incomeTax;
+
+# UC10 Ability to make Employee As Part of Both Sales And Marketing Department.
+
+INSERT INTO employee_payroll (name, phone, address, department, gender, basicPay, deductions, taxablePay, incomeTax, netPay, startdate)
+                      VALUES ('Terisa', '78787878787', 'Mumbai', 'Sales', 'F', 20000, 2000, 1000, 200, 18000, '2020-10-22'),
+                             ('Terisa', '78787878787', 'Mumbai', 'Marketing', 'F', 20000, 2000, 1000, 200, 18000, '2020-10-22');

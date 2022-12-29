@@ -53,3 +53,12 @@ SELECT gender, COUNT(salary) FROM employee_payroll GROUP BY gender;
 ALTER TABLE employee_payroll ADD phone VARCHAR(13) AFTER name,
                              ADD address VARCHAR(100) DEFAULT "Akola" AFTER phone,
                              ADD department VARCHAR(50) NOT NULL AFTER address;
+
+# UC9 Extending Employee Payroll Table i.e to Adding BasicPay, Deductions, TaxablePay, IncomeTax And NetPay Columns as a new columns.
+
+ALTER TABLE employee_payroll RENAME COLUMN salary To basicPay;
+
+ALTER TABLE employee_payroll ADD deductions DOUBLE NOT NULL AFTER basicPay,
+                             ADD taxablePay DOUBLE NOT NULL AFTER deductions,
+                             ADD incomeTax DOUBLE NOT NULL AFTER taxablePay,
+                             ADD netPay DOUBLE NOT NULL AFTER incomeTax;

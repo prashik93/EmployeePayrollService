@@ -11,3 +11,10 @@ create table employee_payroll(
     salary FLOAT NOT NULL,
     startdate DATE NOT NULL
 );
+
+# UC3_InsertDataInEmployeePayrollTable
+
+INSERT INTO employee_payroll (name, salary, startdate) VALUES("Prashik", 50000, "2020-12-29"),
+                                   ("Ratnadip", 60000, "2021-10-28"),
+                                   ("Priyanka", 70000, "2021-03-10"),
+                                   ("Mazhar", 80000, "2020-05-19");

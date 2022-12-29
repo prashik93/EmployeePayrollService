@@ -22,3 +22,9 @@ INSERT INTO employee_payroll (name, salary, startdate) VALUES("Prashik", 50000, 
 # UC4_RetrieveAllDataFromEmployeePayrollData
 
 SELECT * FROM employee_payroll;
+
+# UC5_RetrieveSalaryDataForAParticularEmployee as well as TheEmployeeWhoHasJoinedInAParticularDateRange
+
+SELECT salary FROM employee_payroll WHERE name = "Prashik";
+
+SELECT salary FROM employee_payroll WHERE startdate BETWEEN CAST('2021-01-01' AS DATE) AND DATE (NOW());

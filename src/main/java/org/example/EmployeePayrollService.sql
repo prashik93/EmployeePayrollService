@@ -68,3 +68,43 @@ ALTER TABLE employee_payroll ADD deductions DOUBLE NOT NULL AFTER basicPay,
 INSERT INTO employee_payroll (name, phone, address, department, gender, basicPay, deductions, taxablePay, incomeTax, netPay, startdate)
                       VALUES ('Terisa', '78787878787', 'Mumbai', 'Sales', 'F', 20000, 2000, 1000, 200, 18000, '2020-10-22'),
                              ('Terisa', '78787878787', 'Mumbai', 'Marketing', 'F', 20000, 2000, 1000, 200, 18000, '2020-10-22');
+
+# UC11 Creating Corresponding Tables i.e Company, Employee, Department, And Payroll in payroll_service Database.
+
+CREATE TABLE company (
+                       companyID INT,
+                       companyName VARCHAR(70) NOT NULL,
+                       PRIMARY KEY (companyID)
+                     );
+
+CREATE TABLE employee (
+                        employeeId INT AUTO_INCREMENT PRIMARY KEY,
+                        companyId INT NOT NULL,
+                        name VARCHAR(70) NOT NULL,
+                        phone VARCHAR(13) NOT NULL,
+                        address VARCHAR(70) NOT NULL,
+                        gender CHAR(1) NOT NULL,
+                        FOREIGN KEY (companyID) REFERENCES company(companyID)
+                      );
+
+CREATE TABLE payroll (
+                       payrollId INT NOT NULL,
+                       basicPay DOUBLE NOT NULL,
+                       deductions DOUBLE NOT NULL,
+                       taxablePay DOUBLE NOT NULL,
+                       incomeTax DOUBLE NOT NULL,
+                       netPay DOUBLE NOT NULL,
+                       FOREIGN KEY (payrollId) REFERENCES employee(employeeId)
+                     );
+
+CREATE TABLE department(
+                         deptId INT PRIMARY KEY,
+                         deptName VARCHAR(30) NOT NULL
+                       );
+
+CREATE TABLE employeeDepartment(
+                                  employeeId INT NOT NULL,
+                                  departmentId INT NOT NULL,
+                                  FOREIGN KEY (employeeId) REFERENCES employee(employeeId),
+                                  FOREIGN KEY (departmentId) REFERENCES department(deptId)
+                               );

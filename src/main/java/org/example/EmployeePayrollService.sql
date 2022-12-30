@@ -21,13 +21,29 @@ INSERT INTO employee_payroll (name, salary, startdate) VALUES("Prashik", 50000, 
 
 # UC4_RetrieveAllDataFromEmployeePayrollData
 
-SELECT * FROM employee_payroll;
+SELECT * FROM SELECT * FROM employeedepartment empdpt
+                                                    JOIN employee emp
+                                                    ON empdpt.employeeId = emp.employeeId
+                                                    JOIN department dept
+                                                    ON empdpt.departmentId = dept.deptId
+                                                    JOIN payroll pay
+                                                    ON emp.employeeId = pay.payrollId
+                                                    JOIN company comp
+                                                    ON emp.companyId = comp.companyId;
 
 # UC5_RetrieveSalaryDataForAParticularEmployee as well as TheEmployeeWhoHasJoinedInAParticularDateRange
 
-SELECT salary FROM employee_payroll WHERE name = "Prashik";
+SELECT basicpay FROM employee emp
+                                JOIN payroll pay
+                                ON emp.employeeId = pay.payrollId
+                                WHERE name = 'Prashik';
 
-SELECT salary FROM employee_payroll WHERE startdate BETWEEN CAST('2021-01-01' AS DATE) AND DATE (NOW());
+SELECT basicpay FROM employee emp
+                                JOIN payroll pay
+                                ON emp.employeeId = pay.payrollId
+                                WHERE startdate
+                                BETWEEN CAST('2021-01-01' AS DATE)
+                                AND DATE(NOW());
 
 # UC6_AddingGenderToEmployeePayrollTable
 
@@ -37,16 +53,46 @@ UPDATE employee_payroll SET gender = 'M' WHERE name = "Prashik" OR name = "Ratna
 
 # UC7 Finding Sum, Avg, Min, Max, Count And Number Of Male And Female Employees
 
-SELECT gender, SUM(salary) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;
-SELECT gender, SUM(salary) FROM employee_payroll GROUP BY gender;
+SELECT SUM(basicpay) FROM employee emp
+                                     JOIN payroll pay
+                                     ON emp.employeeId = pay.payrollId
+                                     WHERE gender = 'F'
+                                     GROUP BY gender;
 
-SELECT gender, AVG(salary) FROM employee_payroll GROUP BY gender;
+SELECT gender,
+            SUM(basicpay)
+            FROM employee emp
+            JOIN payroll pay
+            ON emp.employeeId = pay.payrollId
+            GROUP BY gender;
 
-SELECT gender, MIN(salary) FROM employee_payroll GROUP BY gender;
+SELECT gender,
+            AVG(basicpay)
+            FROM employee emp
+            JOIN payroll pay
+            ON emp.employeeId = pay.payrollId
+            GROUP BY gender
 
-SELECT gender, MAX(salary) FROM employee_payroll GROUP BY gender;
+SELECT gender,
+            MIN(basicpay)
+            FROM employee emp
+            JOIN payroll pay
+            ON emp.employeeId = pay.payrollId
+            GROUP BY gender;
 
-SELECT gender, COUNT(salary) FROM employee_payroll GROUP BY gender;
+SELECT gender,
+            MAX(basicpay)
+            FROM employee emp
+            JOIN payroll pay
+            ON emp.employeeId = pay.payrollId
+            GROUP BY gender;
+
+SELECT gender,
+            COUNT(basicpay)
+            FROM employee emp
+            JOIN payroll pay
+            ON emp.employeeId = pay.payrollId
+            GROUP BY gender;
 
 # UC8 Extending Employee Payroll Table i.e to Adding Phone, Address And Department as a new Columns.
 
